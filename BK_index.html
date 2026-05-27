@@ -8,20 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #16352b;
-    --paper: #f5fbf8;
-
+    --ink: #0a0a0f;
+    --paper: #f5f2eb;
     --gold: #c9a84c;
     --gold-light: #e8d5a0;
-
-    /* Secondary Green */
-    --teal: #0b7d50;
-    --teal-light: #e8f8f1;
-
-    --muted: #6c7b74;
-
-    --rule: rgba(14,162,102,0.12);
-
+    --teal: #1a6b72;
+    --teal-light: #e8f4f5;
+    --muted: #6b6b7a;
+    --rule: rgba(10,10,15,0.12);
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
     --mono: 'DM Mono', monospace;
@@ -76,12 +70,7 @@
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    /* background: linear-gradient(135deg, #0d1f22 0%, #0a0a0f 60%); */
-    background: linear-gradient(
-    135deg,
-    #eefaf4 0%,
-    #dff5ea 100%
-  );
+    background: linear-gradient(135deg, #0d1f22 0%, #0a0a0f 60%);
   }
 
   .hero-right::before {
@@ -194,7 +183,7 @@
     align-items: center;
     gap: 12px;
     font-size: 13px;
-    color: #16352b;
+    color: rgba(255,255,255,0.5);
     font-family: var(--mono);
   }
 
@@ -209,7 +198,7 @@
     font-family: var(--serif);
     font-size: clamp(36px, 5vw, 64px);
     font-weight: 400;
-    color: rgba(7, 4, 4, 0.525);
+    color: rgba(255,255,255,0.08);
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 40px;
@@ -217,7 +206,7 @@
   }
 
   .hero-large-text em {
-    color: rgba(6, 3, 3, 0.912);
+    color: rgba(255,255,255,0.2);
     font-style: italic;
   }
 

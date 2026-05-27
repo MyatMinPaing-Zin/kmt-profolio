@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Min Thu — Director & Technology Innovator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f2eb;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a0;
+    --teal: #1a6b72;
+    --teal-light: #e8f4f5;
+    --muted: #6b6b7a;
+    --rule: rgba(10,10,15,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ── HEADER / HERO ── */
+  header {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    background: var(--ink);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-right {
+    padding: 80px 80px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    background: linear-gradient(135deg, #0d1f22 0%, #0a0a0f 60%);
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle at top right, rgba(26,107,114,0.3), transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-top: 24px;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    max-width: 380px;
+    margin-top: 32px;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+    line-height: 1.6;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 56px;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .stat {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 16px;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-family: var(--mono);
+  }
+
+  .contact-dot {
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-large-text {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.08);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-large-text em {
+    color: rgba(255,255,255,0.2);
+    font-style: italic;
+  }
+
+  .scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.55s ease both;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { padding: 0; }
+
+  section {
+    padding: 100px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+    display: inline-block;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 56px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 0 80px;
+  }
+
+  /* ── PROFILE SECTION ── */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .profile-text p {
+    font-size: 17px;
+    color: #2a2a35;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .profile-text p:first-child::first-letter {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--gold);
+    float: left;
+    line-height: 0.8;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+
+  .highlights-box {
+    background: var(--ink);
+    color: #fff;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlights-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--teal));
+  }
+
+  .highlight-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .highlight-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .highlight-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .highlight-icon {
+    width: 32px; height: 32px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .highlight-content h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .highlight-content p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+  }
+
+  /* ── EXPERIENCE / PROJECTS ── */
+  .experience-wrapper {
+    position: relative;
+  }
+
+  .experience-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  }
+
+  .exp-item {
+    padding-left: 48px;
+    padding-bottom: 64px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .exp-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-dot {
+    position: absolute;
+    left: -6px;
+    top: 8px;
+    width: 13px; height: 13px;
+    background: var(--gold);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+  }
+
+  .exp-year {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .exp-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .exp-company-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-family: var(--mono);
+  }
+
+  .exp-desc {
+    font-size: 15px;
+    color: #3a3a45;
+    line-height: 1.75;
+    max-width: 620px;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    padding: 4px 12px;
+    border: 1px solid var(--rule);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  /* ── SKILLS ── */
+  .skills-section {
+    background: var(--ink);
+    max-width: 100%;
+    padding: 100px 80px;
+  }
+
+  .skills-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .skills-section .section-label { color: var(--gold-light); }
+  .skills-section .section-label::before { background: var(--gold); }
+  .skills-section .section-title { color: #fff; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .skill-card {
+    background: #0d0d14;
+    padding: 36px 32px;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .skill-card:hover { background: #131320; }
+
+  .skill-card-icon {
+    font-size: 24px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .skill-card-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .skill-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  .skill-bar-wrap {
+    margin-top: 16px;
+    height: 2px;
+    background: rgba(255,255,255,0.07);
+    overflow: hidden;
+  }
+
+  .skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+    width: 0%;
+    transition: width 1.2s ease;
+  }
+
+  /* ── CURRENT ROLE ── */
+  .current-role {
+    background: var(--teal);
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .current-role-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 80px;
+    width: 100%;
+    max-width: 1360px;
+  }
+
+  .role-left .section-label { color: rgba(255,255,255,0.5); }
+  .role-left .section-label::before { background: rgba(255,255,255,0.4); }
+  .role-left .section-title { color: #fff; margin-bottom: 24px; }
+
+  .role-left p {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .role-right {
+    background: rgba(0,0,0,0.2);
+    padding: 40px;
+  }
+
+  .role-detail {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .role-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .role-detail-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    width: 100px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .role-detail-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 60px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    font-family: var(--mono);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    header { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 32px 40px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .hero-right { padding: 40px 32px 60px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    section { padding: 60px 32px; }
+    .divider { margin: 0 32px; }
+    .profile-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skills-section { padding: 60px 32px; }
+    .current-role-inner { grid-template-columns: 1fr; padding: 60px 32px; }
+    footer { flex-direction: column; gap: 24px; padding: 40px 32px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HERO
+═══════════════════════════════ -->
+<header>
+  <div class="hero-left">
+    <div class="logo-area">
+      <img src="media/favicon.svg" alt="Spring Wave Company Limited" style="width:36px;height:36px;object-fit:contain;border-radius:4px;">
+      <span class="logo-text">Spring Wave Company Limited</span>
+    </div>
+
+    <div>
+      <div class="hero-name">
+        Min<br>
+        <span>Thu.</span>
+      </div>
+      <div class="hero-title">Director &amp; Technology Strategist</div>
+      <p class="hero-tagline">
+        Building systems that move labour, identity, and opportunity across borders. Based between Myanmar &amp; Thailand.
+      </p>
+    </div>
+
+    <div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Gov-Scale Systems</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">25%</div>
+          <div class="stat-label">Revenue Uplift Led</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Countries Operated</div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" style="margin-top:40px;">
+        <div class="scroll-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-contact">
+      <div class="contact-item"><span class="contact-dot"></span>Spring Wave Company Limited — Director</div>
+      <div class="contact-item"><span class="contact-dot"></span>Asia Opseekr Co. Ltd — Market Research Supervisor</div>
+      <div class="contact-item"><span class="contact-dot"></span>Yangon, Myanmar &amp; Thailand</div>
+    </div>
+
+    <!-- PERSONAL PHOTO -->
+    <div style="position:relative; margin-bottom: 36px; align-self: flex-start;">
+      <img
+        src="media/profile.png"
+        alt="Min Thu"
+        style="
+          width: 220px;
+          height: 280px;
+          object-fit: cover;
+          object-position: center top;
+          display: block;
+          filter: grayscale(15%);
+          border: 1px solid rgba(201,168,76,0.3);
+        "
+      >
+      <!-- Company logo badge over the photo corner -->
+      <div style="
+        position: absolute;
+        bottom: -18px;
+        right: -18px;
+        background: #0a0a0f;
+        border: 1px solid rgba(201,168,76,0.4);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      ">
+        <img
+          src="media/favicon.svg"
+          alt="Spring Wave Company Limited"
+          style="width: 28px; height: 28px; object-fit: contain;"
+        >
+        <div>
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;">Spring Wave</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.35);text-transform:uppercase;">Co. Ltd — Director</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-large-text">
+      Systems<br>that <em>scale.</em><br>Insights<br>that drive.
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════
+     PROFILE
+═══════════════════════════════ -->
+<section>
+  <div class="section-label">About</div>
+  <h2 class="section-title">Who I Am</h2>
+
+  <div class="profile-grid">
+    <div class="profile-text">
+      <p>
+        I am Min Thu, a director, systems thinker, and market strategist with a career built on solving complex, cross-border challenges at the intersection of government, labour, and technology. My work spans founding enterprise-grade digital systems for Myanmar's labour sector, leading market intelligence at a regional travel agency, and driving operational strategy for Spring Wave Company Limited.
+      </p>
+      <p>
+        What sets me apart is the rare ability to bridge policy requirements and technical delivery — I have shepherded government-scale projects from concept to nationwide deployment without writing a single line of code myself, instead assembling the right teams, aligning stakeholders, and holding the vision together.
+      </p>
+      <p>
+        I thrive in ambiguity, work across cultures, and consistently turn data into decisions that matter.
+      </p>
+    </div>
+
+    <div class="highlights-box">
+      <div class="highlight-title">Career Highlights</div>
+
+      <div class="highlight-item">
+        <div class="highlight-icon">⚙️</div>
+        <div class="highlight-content">
+          <h4>Founded the RMS — Remittance Management System</h4>
+          <p>Deployed at CI Centers across Thailand under Myanmar's Ministry of Labour. End-to-end operational ownership excluding software development.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-icon">🪪</div>
+        <div class="highlight-content">
+          <h4>Seaman Card Issuance Program</h4>
+          <p>Led data collection, biometric capture, card issuance, and registration for Myanmar seafarers at a national scale.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-icon">🏛️</div>
+        <div class="highlight-content">
+          <h4>OWIC Card Service Provider — Labour Embassy, Thailand</h4>
+          <p>Served as service provider for the Overseas Worker Identification Card (OWIC) programme at Myanmar Labour Embassy in Thailand.</p>
+        </div>
+      </div>
+
+      <div class="highlight-item">
+        <div class="highlight-icon">📊</div>
+        <div class="highlight-content">
+          <h4>25% Revenue Growth via Market Segmentation</h4>
+          <p>Led a niche travel market segmentation initiative at Asia Opseekr that unlocked new revenue streams within one year.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════
+     EXPERIENCE / PROJECTS
+═══════════════════════════════ -->
+<section>
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Experience &amp; Projects</h2>
+
+  <div class="experience-wrapper">
+    <div class="experience-line"></div>
+
+    <!-- Spring Wave -->
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Present</div>
+      <h3 class="exp-title">Director</h3>
+      <div class="exp-company">
+        Spring Wave Company Limited
+        <span class="exp-company-badge">Current Role</span>
+      </div>
+      <p class="exp-desc">
+        Leading strategic direction, partnerships, and operations for Spring Wave Company Limited. Overseeing business development, team management, and ensuring delivery of the company's core service lines across Myanmar and the region.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Strategic Leadership</span>
+        <span class="tag">Business Development</span>
+        <span class="tag">Operations</span>
+        <span class="tag">Partnerships</span>
+      </div>
+    </div>
+
+    <!-- RMS -->
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Thailand · Ministry of Labour</div>
+      <h3 class="exp-title">Founder — Remittance Management System (RMS)</h3>
+      <div class="exp-company">CI Centers, Thailand</div>
+      <p class="exp-desc">
+        Conceived and operationalised the RMS — a comprehensive Remittance Management System currently active at CI (Certificate of Identity) Issuing Centers across Thailand, operating under Myanmar's Ministry of Labour. Responsible for the entire project lifecycle: requirements gathering, vendor coordination, stakeholder alignment, staff training, and rollout. All workflows except software development were designed and managed in-house.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Government Systems</span>
+        <span class="tag">Remittance Operations</span>
+        <span class="tag">Project Management</span>
+        <span class="tag">Ministry of Labour</span>
+        <span class="tag">Thailand</span>
+      </div>
+    </div>
+
+    <!-- Seaman Card -->
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Myanmar · Maritime Sector</div>
+      <h3 class="exp-title">Programme Lead — Seaman Card Issuance</h3>
+      <div class="exp-company">National Seafarer Registration Programme</div>
+      <p class="exp-desc">
+        Directed a large-scale national programme for the registration and credential issuance of Myanmar seafarers. Managed all operational dimensions: data collection at enrolment centres, biometric capture and quality assurance, card production, individual matching and verification, and official registration. Coordinated cross-agency workflows to maintain accuracy and throughput at scale.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Biometrics</span>
+        <span class="tag">Identity Management</span>
+        <span class="tag">Card Issuance</span>
+        <span class="tag">Data Management</span>
+        <span class="tag">Maritime</span>
+      </div>
+    </div>
+
+    <!-- OWIC -->
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Thailand · Labour Embassy</div>
+      <h3 class="exp-title">Service Provider — OWIC Card Programme</h3>
+      <div class="exp-company">Myanmar Labour Embassy, Thailand</div>
+      <p class="exp-desc">
+        Operated as the designated service provider for the Overseas Worker Identification Card (OWIC) programme at the Myanmar Labour Embassy in Thailand. Managed application processing, identity verification, card issuance workflow, and customer-facing operations for registered Myanmar migrant workers — a programme critical to formalising the labour migration pathway.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">OWIC</span>
+        <span class="tag">Labour Migration</span>
+        <span class="tag">Identity Cards</span>
+        <span class="tag">Embassy Operations</span>
+        <span class="tag">Myanmar Workers</span>
+      </div>
+    </div>
+
+    <!-- Asia Opseekr -->
+    <div class="exp-item">
+      <div class="exp-dot"></div>
+      <div class="exp-year">Remote · Tourism Sector</div>
+      <h3 class="exp-title">Market Research Supervisor</h3>
+      <div class="exp-company">Asia Opseekr Company Limited</div>
+      <p class="exp-desc">
+        Leading a distributed team of analysts to provide competitive intelligence, customer behaviour insights, and trend forecasting for one of the region's growing travel and tour agencies. Spearheaded a market segmentation project that identified niche travel segments and contributed to a 25% revenue increase within one year. Established a culture of data-driven decision-making across the organisation.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Market Research</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Team Leadership</span>
+        <span class="tag">Tourism</span>
+        <span class="tag">Competitive Intelligence</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════
+     SKILLS
+═══════════════════════════════ -->
+<div class="skills-section">
+  <div class="skills-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">Core Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-card-icon">🏗️</span>
+        <div class="skill-card-title">Systems Design &amp; Programme Management</div>
+        <div class="skill-card-desc">End-to-end ownership of complex, multi-stakeholder programmes — from concept through live operation at government scale.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="95"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon">📊</span>
+        <div class="skill-card-title">Market Research &amp; Data Analysis</div>
+        <div class="skill-card-desc">Statistical analysis, data visualisation, trend forecasting, and competitive intelligence translated into actionable strategy.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon">🪪</span>
+        <div class="skill-card-title">Identity &amp; Credential Systems</div>
+        <div class="skill-card-desc">Biometric enrolment, card issuance, identity verification, and registration operations for large worker and maritime populations.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="92"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon">🌏</span>
+        <div class="skill-card-title">Cross-Border Labour Operations</div>
+        <div class="skill-card-desc">Deep expertise in Myanmar–Thailand labour migration frameworks, government liaison, embassy operations, and compliance.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="97"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon">🤝</span>
+        <div class="skill-card-title">Stakeholder &amp; Partnership Management</div>
+        <div class="skill-card-desc">Aligning government agencies, vendors, and cross-functional teams across cultures and languages to achieve common goals.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-card-icon">🔭</span>
+        <div class="skill-card-title">Strategic Planning &amp; Business Development</div>
+        <div class="skill-card-desc">Company direction-setting, market entry strategy, revenue growth initiatives, and long-term competitive positioning.</div>
+        <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     CURRENT ROLE
+═══════════════════════════════ -->
+<div style="background: var(--teal); width: 100%;">
+  <div class="current-role-inner">
+    <div class="role-left">
+      <div class="section-label">Current Position</div>
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom: 16px;">
+        <img src="YOUR_COMPANY_LOGO_URL_HERE" alt="Spring Wave Company Limited" style="width:52px;height:52px;object-fit:contain;background:rgba(255,255,255,0.08);padding:8px;border-radius:4px;">
+        <h2 class="section-title" style="margin-bottom:0;">Spring Wave Company Limited</h2>
+      </div>
+      <p>
+        As Director of Spring Wave Company Limited, I lead the company's strategic and operational direction. Drawing on over a decade of experience delivering high-stakes programmes in labour management, identity systems, and market intelligence, I focus on building partnerships and services that create real impact across the Myanmar–Thailand corridor.
+      </p>
+    </div>
+    <div class="role-right">
+      <div class="role-detail">
+        <span class="role-detail-label">Role</span>
+        <span class="role-detail-value">Director</span>
+      </div>
+      <div class="role-detail">
+        <span class="role-detail-label">Company</span>
+        <span class="role-detail-value">Spring Wave Company Limited</span>
+      </div>
+      <div class="role-detail">
+        <span class="role-detail-label">Also At</span>
+        <span class="role-detail-value">Asia Opseekr Co. Ltd — Market Research Supervisor</span>
+      </div>
+      <div class="role-detail">
+        <span class="role-detail-label">Region</span>
+        <span class="role-detail-value">Myanmar &amp; Thailand</span>
+      </div>
+      <div class="role-detail">
+        <span class="role-detail-label">Sectors</span>
+        <span class="role-detail-value">Labour, Identity Systems, Tourism, Market Research</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     FOOTER
+═══════════════════════════════ -->
+<footer>
+  <div class="footer-name">Min Thu</div>
+  <div class="footer-links">
+    <a class="footer-link" href="mailto:">Contact</a>
+    <a class="footer-link" href="#">LinkedIn</a>
+    <a class="footer-link" href="#">GitHub</a>
+  </div>
+  <div class="footer-copy">© 2024 Min Thu. All rights reserved.</div>
+</footer>
+
+<script>
+  // Intersection observer for experience items
+  const items = document.querySelectorAll('.exp-item');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  items.forEach(i => io.observe(i));
+
+  // Skill bar animation
+  const bars = document.querySelectorAll('.skill-bar');
+  const barIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.width + '%';
+        barIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(b => barIO.observe(b));
+</script>
+</body>
+</html>
